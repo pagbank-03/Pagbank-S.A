@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagamento | VF Bank</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      color: #555;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 1.5em;
+      width: 100%;
+      padding: 12px;
+      background-color: #0070f3;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .success-message {
+      margin-top: 1em;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pagamento VF Bank</h2>
+    <form id="payment-form">
+      <label for="name">Nome no Cartão</label>
+      <input type="text" id="name" required />
+
+      <label for="card">Número do Cartão</label>
+      <input type="text" id="card" maxlength="16" required />
+
+      <label for="validity">Validade (MM/AA)</label>
+      <input type="text" id="validity" maxlength="5" required />
+
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" maxlength="3" required />
+
+      <label for="amount">Valor (R$)</label>
+      <input type="number" id="amount" min="1" step="0.01" required />
+
+      <button type="submit">Pagar</button>
+      <p class="success-message" id="success" style="display: none;">Pagamento efetuado com sucesso!</p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("payment-form");
+    const success = document.getElementById("success");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Aqui você pode integrar com uma API real no futuro.
+      success.style.display = "block";
+
+      // Limpa os campos
+      form.reset();
+
+      // Oculta a mensagem após 4 segundos
+      setTimeout(() => {
+        success.style.display = "none";
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
